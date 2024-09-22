@@ -1,0 +1,314 @@
+/* Cielo nocturno animado con estrellas */
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #000033;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Fondo de estrellas */
+    background-size: cover;
+    background-repeat: repeat;
+    animation: starsMove 200s linear infinite;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    cursor: crosshair;
+}
+
+p{
+    color: #ffffff;
+}
+
+/* Animación del movimiento del fondo de estrellas */
+@keyframes starsMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 10000px 10000px; }
+}
+
+/* Efecto de luz tenue alrededor de la página */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.2); /* Luz tenue */
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5em;
+    color: #dac615;
+    text-shadow: 0 0 5px #ff3333, 0 0 10px #ff3333;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #ff0000; }
+    100% { text-shadow: 0 0 20px #ff3333; }
+}
+
+/* Carrusel de imágenes (Galería animada) */
+.gallery {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px auto;
+    height: 570px; /* Altura del contenedor */
+    overflow: hidden;
+}
+
+.gallery-item {
+    position: absolute; /* Permite superponer las imágenes */
+    width: 100%; /* Cada imagen ocupa todo el contenedor */
+    opacity: 0; /* Oculta las imágenes por defecto */
+    transition: opacity 1s ease-in-out; /* Suaviza la transición */
+}
+
+.gallery-item.active {
+    opacity: 1; /* Solo la imagen activa es visible */
+}
+
+.gallery-item img {
+    width: 550px; /* Mantiene el tamaño automático */
+    height: 520px; /* Establece una altura fija */
+    max-width: 100%; /* Limita el ancho al contenedor */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.gallery-item p {
+    margin-top: 10px; /* Espacio entre la imagen y el texto */
+    text-align: center; /* Centra el texto */
+    font-size: 1.2em; /* Tamaño del texto */
+    color: #ffffff; /* Color del texto */
+}
+
+
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-220px); }
+    50% { transform: translateX(-440px); }
+    75% { transform: translateX(-660px); }
+    100% { transform: translateX(-880px); }
+}
+
+
+/* Globos flotantes */
+.balloons {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Para que no interfieran con otros elementos */
+}
+
+.balloon {
+    width: 80px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -150px;
+    animation: floatBalloon 10s ease-in infinite;
+    opacity: 0.8;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    width: 2px;
+    height: 50px;
+    background-color: #aaa; /* Cuerda del globo */
+}
+
+.balloon1 {
+    left: 5%; /* Lado izquierdo */
+    background-color: #ff6666; /* Rojo */
+    animation-delay: 0s;
+}
+
+.balloon2 {
+    right: 5%; /* Lado derecho */
+    background-color: #66b3ff; /* Azul */
+    animation-delay: 2s;
+}
+
+.balloon3 {
+    left: 5%; /* Lado izquierdo */
+    bottom: -250px;
+    background-color: #99ff99; /* Verde */
+    animation-delay: 4s;
+}
+
+.balloon4 {
+    right: 5%; /* Lado derecho */
+    bottom: -200px;
+    background-color: #ffff66; /* Amarillo */
+    animation-delay: 6s;
+}
+
+/* Animación de los globos */
+@keyframes floatBalloon {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-1100px); /* Flotan hacia arriba */
+    }
+}
+
+
+/* Efecto de escritura */
+.typing {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Botón interactivo */
+.love-button {
+    font-size: 1.5em;
+    padding: 10px 25px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.love-button:hover {
+    background-color: #ffff66;
+    transform: scale(1.1);
+}
+
+/* Confeti flotante */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+/* Gatos saltarines */
+#cat-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* No interfiere con los clics */
+}
+
+.animated-cat {
+    position: absolute;
+    width: 100px; /* Tamaño del gato */
+    height: auto;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes moveCat {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(150px, -150px) rotate(360deg) scale(1.5);
+    }
+    100% {
+        transform: translate(300px, 150px) rotate(720deg) scale(1);
+    }
+}
+/* Mensajes de amor */
+#love-messages {
+    margin-top: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    color: #ff69b4; /* Rosa sentimental */
+    text-align: center;
+    opacity: 0;
+    animation: fadeInMessages 12s infinite;
+}
+
+.love-message {
+    display: none;
+}
+
+@keyframes fadeInMessages {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+/* Corazón que late */
+.heart-beat {
+    position: relative;
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+    background-color: #ff1414;
+    transform: rotate(-45deg);
+    animation: heartBeat 1.5s infinite;
+}
+
+.heart-beat::before,
+.heart-beat::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #ff1414;
+    border-radius: 50%;
+}
+
+.heart-beat::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart-beat::after {
+    left: 50px;
+    top: 0;
+}
+
+/* Animación del corazón */
+@keyframes heartBeat {
+    0% { transform: scale(1) rotate(-45deg); }
+    50% { transform: scale(1.1) rotate(-45deg); }
+    100% { transform: scale(1) rotate(-45deg); }
+}
+
+/* Pétalos cayendo */
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.petals {
+    position: fixed;
+    top: -150px;
+    left: 50%;
+    width: 75px;
+    height: 100px;
+    background-image: url('Imagenes/Pollo.png'); /* Reemplaza con una imagen de pétalo */
+    background-size: cover;
+    opacity: 0.8;
+    animation: fall 10s infinite;
+    animation-delay: calc(-1s * var(--i));
+}
